@@ -1,0 +1,22 @@
+# Virtual Environments
+venv/
+env/
+.env
+.env.*
+!.env.example
+__pycache__/
+*.pyc
+
+# Node
+node_modules/
+dist/
+.next/
+coverage/
+
+# IDEs
+.vscode/
+.idea/
+.DS_Store
+
+# Logs
+*.log

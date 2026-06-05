@@ -1,0 +1,168 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+@plugin "@tailwindcss/typography";
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+  --font-serif: var(--font-serif);
+}
+
+:root {
+  /* Extremely clean light theme inspired by Claude */
+  --background: 0 0% 100%;
+  --foreground: 0 0% 9%;
+  
+  --card: 0 0% 100%;
+  --card-foreground: 0 0% 9%;
+  
+  --popover: 0 0% 100%;
+  --popover-foreground: 0 0% 9%;
+  
+  --primary: 15 65% 60%; /* Muted burnt orange for the asterisk/accents */
+  --primary-foreground: 0 0% 100%;
+  
+  --secondary: 0 0% 96%; /* Very light gray for pills and sidebar hover */
+  --secondary-foreground: 0 0% 20%;
+  
+  --muted: 0 0% 96%;
+  --muted-foreground: 0 0% 45%;
+  
+  --accent: 0 0% 96%;
+  --accent-foreground: 0 0% 9%;
+  
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 0 0% 98%;
+  
+  --border: 0 0% 90%;
+  --input: 0 0% 90%;
+  --ring: 15 65% 60%;
+  
+  --radius: 0.75rem;
+
+  /* Sidebar specific variables */
+  --sidebar-background: 0 0% 99%;
+  --sidebar-foreground: 0 0% 20%;
+  --sidebar-border: 0 0% 93%;
+  
+  --bg-main: #F9F9F7;
+  --sidebar-bg: #F2F1EE;
+  --sidebar-border-color: #E2E0DC;
+}
+
+.dark {
+  --background: 240 10% 3.9%;
+  --foreground: 0 0% 98%;
+
+  --card: 240 10% 3.9%;
+  --card-foreground: 0 0% 98%;
+
+  --popover: 240 10% 3.9%;
+  --popover-foreground: 0 0% 98%;
+
+  --primary: 15 65% 60%;
+  --primary-foreground: 0 0% 100%;
+
+  --secondary: 240 3.7% 15.9%;
+  --secondary-foreground: 0 0% 98%;
+
+  --muted: 240 3.7% 15.9%;
+  --muted-foreground: 240 5% 64.9%;
+
+  --accent: 240 3.7% 15.9%;
+  --accent-foreground: 0 0% 98%;
+
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 0 0% 98%;
+
+  --border: 240 3.7% 15.9%;
+  --input: 240 3.7% 15.9%;
+  --ring: 15 65% 60%;
+
+  --sidebar-background: 240 5.9% 10%;
+  --sidebar-foreground: 240 4.8% 95.9%;
+  --sidebar-border: 240 3.7% 15.9%;
+  
+  --bg-main: #111110;
+  --sidebar-bg: #0C0C0B;
+  --sidebar-border-color: #242422;
+}
+
+@layer base {
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+  }
+}
+
+/* Holographic Golden Yellow Input Effect */
+.holographic-input {
+  overflow: hidden;
+  transition: all 0.5s ease;
+}
+
+.holographic-input::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    0deg, 
+    transparent, 
+    transparent 30%, 
+    rgba(255, 184, 28, 0.4)
+  );
+  transform: rotate(-45deg);
+  transition: all 0.5s ease;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.group:hover .holographic-input,
+.group:focus-within .holographic-input {
+  border-color: rgba(255, 184, 28, 0.4);
+  box-shadow: 0 0 20px rgba(255, 184, 28, 0.15), 0 2px 12px rgba(0,0,0,0.03);
+}
+
+.group:hover .holographic-input::before,
+.group:focus-within .holographic-input::before {
+  opacity: 1;
+  transform: rotate(-45deg) translateY(100%);
+}
+
+@property --gradient-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes rotation {
+  0% { --gradient-angle: 0deg; }
+  100% { --gradient-angle: 360deg; }
+}
+
+.gradient-border-component {
+  position: relative;
+  box-sizing: border-box;
+}
+
+.gradient-border-auto {
+  animation: rotation var(--animation-duration, 5s) linear infinite;
+}
+
+.gradient-border-hover:hover {
+  animation: rotation var(--animation-duration, 5s) linear infinite;
+}
+
+.gradient-border-stop-hover {
+  animation: rotation var(--animation-duration, 5s) linear infinite;
+}
+
+.gradient-border-stop-hover:hover {
+  animation-play-state: paused;
+}

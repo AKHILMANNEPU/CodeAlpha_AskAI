@@ -1,0 +1,10 @@
+fastapi
+uvicorn
+supabase
+python-dotenv
+pydantic
+nltk
+scikit-learn
+PyPDF2 
+python-docx 
+python-multipart
