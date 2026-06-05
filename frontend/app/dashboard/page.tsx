@@ -20,7 +20,7 @@ export default function Dashboard() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    fetch("http://localhost:8000/analytics")
+    fetch("https://codealphaaskai-production.up.railway.app/analytics")
       .then((res) => res.json())
       .then((result) => {
         setData(result);

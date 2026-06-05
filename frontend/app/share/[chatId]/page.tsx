@@ -58,7 +58,7 @@ export default function SharePage() {
 
   useEffect(() => {
     if (params.chatId) {
-      fetch(`http://localhost:8000/chats/${params.chatId}`)
+      fetch(`https://codealphaaskai-production.up.railway.app/chats/${params.chatId}`)
         .then(res => res.json())
         .then(data => {
           setMessages(data)

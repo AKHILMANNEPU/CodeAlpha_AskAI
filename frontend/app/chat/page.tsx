@@ -147,7 +147,7 @@ export default function Home() {
     if (id === currentChatId) return;
     setCurrentChatId(id);
     setActiveDocument(null);
-    fetch(`http://localhost:8000/chats/${id}`)
+    fetch(`https://codealphaaskai-production.up.railway.app/chats/${id}`)
       .then(res => res.json())
       .then(data => setMessages(Array.isArray(data) ? data : []))
       .catch(console.error);
@@ -158,7 +158,7 @@ export default function Home() {
     const formData = new FormData();
     formData.append("file", file);
     try {
-      const response = await fetch("http://localhost:8000/upload", {
+      const response = await fetch("https://codealphaaskai-production.up.railway.app/upload", {
         method: "POST",
         body: formData,
       });
@@ -216,7 +216,7 @@ export default function Home() {
         setSidebarRefresh(prev => prev + 1);
       }
 
-      const response = await fetch("http://localhost:8000/chat/stream", {
+      const response = await fetch("https://codealphaaskai-production.up.railway.app/chat/stream", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ 

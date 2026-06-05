@@ -69,7 +69,7 @@ export default function ProfilePage() {
     setMessage(null);
 
     try {
-      const response = await fetch(`http://localhost:8000/users/${user.id}`, {
+      const response = await fetch(`https://codealphaaskai-production.up.railway.app/users/${user.id}`, {
         method: 'DELETE',
       });
 
