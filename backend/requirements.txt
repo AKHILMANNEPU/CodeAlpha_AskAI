@@ -13,3 +13,5 @@ sentence-transformers
 openai
 together
 httpx
+deep-translator
+langdetect
