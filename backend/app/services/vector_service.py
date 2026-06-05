@@ -40,14 +40,10 @@ class VectorService:
             if not self.faqs:
                 return
 
-            current_hash = self.calculate_file_hash()
-            
-            if os.path.exists(self.cache_path) and os.path.exists(self.hash_path):
-                with open(self.hash_path, 'r') as f:
-                    saved_hash = f.read().strip()
-                if saved_hash == current_hash:
-                    self.index = faiss.read_index(self.cache_path)
-                    return
+            # In production (Railway), just load the index if it exists to avoid timeouts!
+            if os.path.exists(self.cache_path):
+                self.index = faiss.read_index(self.cache_path)
+                return
             
             print(f"Computing embeddings for {len(self.faqs)} FAQs and building FAISS index...")
             model = get_embedding_model()
