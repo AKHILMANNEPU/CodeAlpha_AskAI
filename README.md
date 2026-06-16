@@ -1,6 +1,6 @@
 # CodeAlpha_AskAI
 
-**AskAI** is a scalable, modern chatbot platform that leverages a dynamic architecture to provide intelligent, contextual conversations. The application seamlessly bridges a sleek, high-performance user interface with a robust, AI-orchestrating backend.
+**AskAI** is a scalable, modern chatbot platform that leverages a dynamic architecture to provide intelligent, contextual conversations. The application seamlessly bridges a sleek, high-performance user interface with a robust, AI-orchestrating backend and also it is for free .
 
 ## 🚀 Technology Stack
 
